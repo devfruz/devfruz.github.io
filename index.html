@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./mainStyles.css">
+  <title> Portfolio </title>
+</head>
+<body>
+ <nav class="navBar">
+   <a href="#about_me_2">About me</a>
+   <a href="#project_section_id"> Projects </a>
+   <a href="#contact_me_id"> Contact me </a>
+ </nav>
+ <section id="about_me_id" class="about_me_section">
+ <div class="about_me">
+
+  <h1 id="hello_id"> Hello! </h1>
+  <hr>
+    <h2 class="name_s">I'm Nahu, <br /></h2>
+    <h3 class="fullstack_s"> a full-stack software developer <br /></h3>
+     <br/>
+  <hr>
+ </div>
+ <div class="img_div">
+   <img src="profile.png">
+ </div>
+
+ </section>
+ <section id="about_me_2" class="about_me_2">
+  <p class="description"> 
+  Hello, I'm Nahuel a full-stack software developer and Software Engineering Student. <br />
+  Front-end technologies : HTML | CSS | Javascript. <br />
+  Back-end technologies : Node.js | Express.js | PostgreSQL. <br />
+  Some tools I use are Git, cURL, and neovim. <br />
+  When not doing web-development I'm currently building small projects with Rust. <br />
+  </p>
+
+  <p class="description"> 
+  Outside coding, I'm interested in sports, music and science.  <br />
+  I speak spanish, but also english at a high proficiency level. <br />
+  </p>
+
+ </section>
+ <hr>
+
+
+ <!-- PROJECT -->
+ <section id="project_section_id" class="project_section">
+  <h1> My projects </h1>
+  <p class="description"> 
+    <span class="f-weight">e-commerce web </span><br /> 
+    It has a login and register,<br />
+    A navigation bar to switch between login, register, main <br />
+    A sidebar to request to a Postgres database what items <br />
+    are available, and display them on the main page.
+  </p>
+  <div id="img_previous_next_div">
+    <button id="previous_id"> Previous </button>
+    <img class="img_project" src="./assets/product_details_ecommerce.png">
+    <img class="img_project active" src="./assets/login_ecommerce.png">
+    <img class="img_project" src="./assets/main_ecommerce.png">
+    <img class="img_project" src="./assets/register_ecommerce.png">
+    <button id="next_id"> Next </button>
+  </div>
+ </section>
+
+ <hr>
+
+ <!-- PROJECT 2 -->
+ <section id="project_section_id2" class="project_section">
+  <p class="description"> 
+    <span class="f-weight"> Group chat </span><br /> 
+    A chat using socket.io that stores messages <br />
+    in a Postgres database
+  </p>
+  <div id="img_previous_next_div2">
+    <button id="previous_id2"> Previous </button>
+    <img class="img_project2 active" src="./assets/chat_display.png">
+    <img class="img_project2" src="./assets/chat_database.png"> 
+    <button id="next_id2"> Next </button>
+  </div>
+ </section>
+
+ <hr>
+
+ <!-- PROJECT 3 -->
+ <section id="project_section_id" class="project_section">
+  <p class="description"> 
+    <span class="f-weight"> Calories counter </span><br /> 
+    Web used to track calories per food <br />
+  </p>
+  <div id="img_previous_next_div2">
+    <!-- <button id="previous_id2"> Previous </button> -->
+    <img class="img_project3" src="./assets/main_calories_counter.png">
+    <!-- <button id="next_id2"> Next </button> -->
+  </div>
+ </section>
+
+ <hr>
+
+ <section class="project_section" id="contact_me_id" >
+   <a href="https://github.com/devfruz"> GitHub </a>
+   <a href="https://ar.linkedin.com/in/nahuel-nicosia-519106121"> LinkedIn </a>
+ </section>
+
+  <script>
+  const select_hello_h1 = document.getElementById("hello_id"); 
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    // select all elements that share specified class
+    // Show and hide imgs
+    const select_img_slides = document.querySelectorAll(".img_project"); 
+    const prev_btn = document.getElementById("previous_id");
+    const next_btn = document.getElementById("next_id");
+    let current_img_index = 0; 
+
+    function show_current_index(i){
+      select_img_slides.forEach(img => {
+	img.classList.remove('active'); 
+      });
+      select_img_slides[i].classList.add('active');
+    }
+
+    function next_img(){
+      current_img_index += 1;
+      if (current_img_index >= select_img_slides.length ) {
+        current_img_index = 0;
+      }
+      show_current_index(current_img_index);
+    }		    
+    function prev_img(){
+      current_img_index -= 1;
+      if (current_img_index <= 0 ) {
+        current_img_index = select_img_slides.length - 1;
+      }
+      show_current_index(current_img_index);
+    }		    
+    next_btn.addEventListener('click',next_img);
+    prev_btn.addEventListener('click',prev_img);
+    show_current_index(current_img_index);
+
+    // For project2, It should be general
+    const select_img_slides2 = document.querySelectorAll(".img_project2"); 
+    const prev_btn2 = document.getElementById("previous_id2");
+    const next_btn2 = document.getElementById("next_id2");
+    let current_img_index2 = 0; 
+
+    function show_current_index2(i){
+      select_img_slides2.forEach(img => {
+	img.classList.remove('active'); 
+      });
+      select_img_slides2[i].classList.add('active');
+    }
+
+    function next_img2(){
+      current_img_index2 += 1;
+      if (current_img_index2 >= select_img_slides2.length ) {
+        current_img_index2 = 0;
+      }
+      show_current_index2(current_img_index2);
+    }		    
+    function prev_img2(){
+      current_img_index2 -= 1;
+      if (current_img_index2 <= 0 ) {
+        current_img_index2 = select_img_slides2.length - 1;
+      }
+      show_current_index2(current_img_index2);
+    }		    
+    next_btn2.addEventListener('click',next_img2);
+    prev_btn2.addEventListener('click',prev_img2);
+    show_current_index2(current_img_index2);
+
+  }); // Close listener on 'DOMContentLoaded'
+
+
+
+
+  // delay to simulate typing
+  function custom_delay(){
+    return new Promise( (resolve) => {
+	  setTimeout(resolve, 1000);
+    } )
+  }
+  async function simulate_typewriting(){
+    const hello_str = "Hello!";
+    const str_length = hello_str.length ;
+    let count_while = 0;
+
+    while(count_while < 2 ){
+      count_while++;
+      await custom_delay();
+      select_hello_h1.textContent = "H";
+      for ( let i=1; i<str_length; i++  ){
+	await custom_delay();
+	select_hello_h1.textContent = select_hello_h1.textContent + hello_str[i];
+      } // for
+    } // while
+  }
+  simulate_typewriting();
+
+  </script>
+</body>
+</html>
